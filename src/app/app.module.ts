@@ -2,17 +2,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SalesMaterialModules } from './material';
+import { SalesComponent } from './components/sales/sales.component';
+import { SalesListComponent } from './components/sales-list/sales-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SalesComponent,
+    SalesListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SalesMaterialModules
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,12 +7,27 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SalesListComponent implements OnInit {
 
-  @Input() quotes: Object;
-
+  @Input() quotes: Array<any>;
+  private total = [];
   constructor() { }
 
-  ngOnInit() {
+  private Calculate () {
+    this.quotes.forEach(quote => {
+      let total = 0;
+      quote.qliList.forEach(item => {
+      total += item.price*item.quantity;
+      });
+      this.total.push(total)
+    })
+  }
+
+  private buy (quote, i) {
+    this.quotes.splice(i,1)
     console.log(this.quotes)
+  }
+
+  ngOnInit() {
+    this.Calculate();
   }
 
 }

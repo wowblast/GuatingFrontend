@@ -2,6 +2,36 @@
     text-align: center;
 }
 .colorfull {
-    background-color: rgb(219, 112, 130);
+    background-color: rgb(218, 74, 134);
     color: white;
+}
+.salesList {
+    margin-left: 10vw;
+    width: 80vw;
+    background-color: transparent;
+}
+.table {
+    height: 80vh;
+    margin-top: -5vh;
+    overflow-y: scroll;
+}
+.salesPage {
+    background-color: #ECECEC;
+    height: 100vh;
+    width: 100vw;
+    margin-left: -1vw;
+    margin-top: -1vh ;
+}
+.title {
+    height: 8vh;
+    vertical-align: middle;
+}
+.content {
+    margin-top: -2vh;
+    height: 70vh;
+}
+.listCont {
+    height: 70vh;
+    margin-top: -1vh;
+    background-color: transparent;
 }

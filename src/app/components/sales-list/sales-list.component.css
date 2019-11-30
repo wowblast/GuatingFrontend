@@ -1,0 +1,30 @@
+.element {
+    width: 80vw;
+    margin-left: -1vw;
+    background-color: white;
+}
+.item {
+    margin-left: 2vw;
+}
+.qli {
+    width: 20vw;
+}
+.total {
+    margin-left: 60vw;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+}
+.container {
+  margin-top: 0.5vh;
+  display: flex;
+}
+.title {
+    color: rgb(218, 74, 134);
+}
+.list {
+    height: 70vh;
+    overflow-y: scroll;
+}
+.button {
+    margin-left: 3vw;
+}

@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SalesListComponent implements OnInit {
 
-  @Input() quotes: Array<Object>;
+  @Input() quotes: Array<any>;
   private total = [];
   constructor() { }
 

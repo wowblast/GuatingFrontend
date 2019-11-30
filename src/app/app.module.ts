@@ -7,14 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SalesMaterialModules } from './material';
 import { SalesComponent } from './components/sales/sales.component';
 import { SalesListComponent } from './components/sales-list/sales-list.component';
-import { ListItemComponent } from './components/list-item/list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SalesComponent,
-    SalesListComponent,
-    ListItemComponent
+    SalesListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,42 @@
+
+<div class = "background">
+        <div layout="row" layout-align="center center"
+        >
+               <H1>Cotizaciones</H1>
+        </div>
+        <mat-card>
+  <mat-form-field>
+    <mat-label>Cliente</mat-label>
+    <mat-select (selectionChange)="changeClient($event.value)">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        <mat-label>{{food.viewValue}}</mat-label>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Producto</mat-label>
+    <mat-select >
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+ 
+    <mat-form-field class="example-full-width">
+        <mat-placeholder class="placeholder">Cantidad </mat-placeholder>
+      <input   matInput  value="1" type="number">
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary">Crear Cotizaciones</button>
+ 
+</mat-card>
+
+
+  <div *ngFor="let food of foods" class="col-4 card">
+    <mat-card class ="quote">  {{food.viewValue}}</mat-card>
+</div>
+ 
+
+</div>
+
+

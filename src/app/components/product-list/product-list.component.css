@@ -1,0 +1,60 @@
+.example-container {
+  align-content: center;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .example-container > * {
+    align-content: center;
+
+    width: 90%;
+  }
+
+
+  
+
+  .example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+  text-align: center;
+
+}
+h1 {
+  margin: auto;
+  text-align: center;
+  background-color: #00C853;
+  height: 100%;
+  width: 95%;
+  margin-bottom: 1%;
+
+
+}
+mat-select,mat-label,  button, input{
+  margin: auto;
+  text-align: center;
+  align-content: center;
+  margin-left: 5%;
+  color: #FFFFFF;
+
+
+
+}
+
+mat-card ,button{
+  margin: auto;
+  background-color: #03A9F4;
+  text-align: center;
+  align-content: center;
+  width: 40%;
+  display: block;
+}
+.quote {
+  background-color: #00C853;
+  margin-top: 1%;
+  color: #FFFFFF;
+}
+.mat-focused .placeholder{
+  color: #FFFFFF;
+
+}

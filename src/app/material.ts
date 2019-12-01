@@ -7,6 +7,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import {MatDividerModule} from '@angular/material/divider';
         MatTableModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDividerModule],
+        MatDividerModule,
+        MatSelectModule],
     exports: [
         MatButtonModule,
         MatListModule,
@@ -26,6 +28,7 @@ import {MatDividerModule} from '@angular/material/divider';
         MatTableModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDividerModule]
+        MatDividerModule,
+        MatSelectModule]
 })
 export class SalesMaterialModules {  }

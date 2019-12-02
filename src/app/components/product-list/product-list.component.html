@@ -1,42 +1,70 @@
-
-<div class = "background">
-        <div layout="row" layout-align="center center"
-        >
-               <H1>Cotizaciones</H1>
-        </div>
-        <mat-card>
-  <mat-form-field>
-    <mat-label>Cliente</mat-label>
-    <mat-select (selectionChange)="changeClient($event.value)">
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        <mat-label>{{food.viewValue}}</mat-label>
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Producto</mat-label>
-    <mat-select >
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
- 
-    <mat-form-field class="example-full-width">
-        <mat-placeholder class="placeholder">Cantidad </mat-placeholder>
-      <input   matInput  value="1" type="number">
+<div class="background">
+  <div layout="row" layout-align="center center">
+    <H1>Cotizaciones</H1>
+  </div>
+  <mat-card class="mainCard">
+    <mat-form-field>
+      <mat-label>Cliente</mat-label>
+      <mat-select (selectionChange)="changeClient($event.value)">
+        <mat-option *ngFor="let client of clients" [value]="client.clientId">
+          <div class="option-class"> {{client.name}}</div>
+        </mat-option>
+      </mat-select>
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Producto</mat-label>
+      <mat-select   (selectionChange)="changeProduct($event.value)">
+        <mat-option *ngFor="let product of products" [value]="product.code">
+          {{product.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Nombre de Cotización</mat-label>
+
+
+      <input matInput [(ngModel)]="quoteName" >
+    </mat-form-field>
+
+    <mat-form-field >
+      <mat-label>Cantidad</mat-label>
+
+
+      <input matInput value="1" type="number" [(ngModel)]="this.quantity">
+    </mat-form-field>
+
+      <mat-form-field >
+        <mat-label>Precio</mat-label>
   
-    <button mat-raised-button color="primary">Crear Cotizaciones</button>
+  
+        <input matInput value="1" type="number" [(ngModel)]="price">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="createQuoting()">Crear Cotización</button>
+
+  </mat-card>
  
-</mat-card>
+
+  <div *ngFor="let qt of quote.quoteListItems" class="col-3 card">
+    <mat-card class="quote">
+      <mat-card-header>
+        <mat-card-title>{{qt.quoteName}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <mat-grid-list cols="3" rowHeight="2:1">
+          <mat-grid-tile>Producto: {{qt.productCode}}</mat-grid-tile>
+          <mat-grid-tile>Precio: {{qt.price}}</mat-grid-tile>
+          <mat-grid-tile>Cantidad: {{qt.quantity}}</mat-grid-tile>
+
+        </mat-grid-list>
+      </mat-card-content>
+
+    </mat-card>
 
 
-  <div *ngFor="let food of foods" class="col-4 card">
-    <mat-card class ="quote">  {{food.viewValue}}</mat-card>
+  </div>
+  <button *ngIf="quote.quoteListItems.length != 0" mat-raised-button (click)="saveQuoteList()">Guardar Cotización</button>
+
+
 </div>
- 
-
-</div>
-
-

@@ -8,6 +8,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
     imports: [
@@ -19,7 +21,9 @@ import {MatSelectModule} from '@angular/material/select';
         MatFormFieldModule,
         MatInputModule,
         MatDividerModule,
-        MatSelectModule],
+        MatSelectModule,
+        MatGridListModule,
+        MatSnackBarModule],
     exports: [
         MatButtonModule,
         MatListModule,
@@ -29,6 +33,8 @@ import {MatSelectModule} from '@angular/material/select';
         MatFormFieldModule,
         MatInputModule,
         MatDividerModule,
-        MatSelectModule]
+        MatSelectModule,
+        MatGridListModule,
+        MatSnackBarModule]
 })
 export class SalesMaterialModules {  }

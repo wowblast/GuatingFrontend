@@ -8,6 +8,9 @@ import { SalesMaterialModules } from './material';
 import { SalesComponent } from './components/sales/sales.component';
 import { SalesListComponent } from './components/sales-list/sales-list.component';
 import { ProductlistComponent } from './components/product-list/product-list.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +22,9 @@ import { ProductlistComponent } from './components/product-list/product-list.com
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SalesMaterialModules
+    SalesMaterialModules,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

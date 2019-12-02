@@ -10,10 +10,6 @@
 
     width: 90%;
   }
-
-
-  
-
   .example-button-row button,
 .example-button-row a {
   margin-right: 8px;
@@ -23,14 +19,17 @@
 h1 {
   margin: auto;
   text-align: center;
-  background-color: #00C853;
-  height: 100%;
+  background-color: #4d80e4;
   width: 95%;
   margin-bottom: 1%;
-
+  padding: 1%;
+  color: #FFFFFF;
 
 }
-mat-select,mat-label,  button, input{
+
+
+
+ input,  mat-label{
   margin: auto;
   text-align: center;
   align-content: center;
@@ -40,14 +39,28 @@ mat-select,mat-label,  button, input{
 
 
 }
-
-mat-card ,button{
+option-class {
+  color: #FFFFFF;
+}
+button {
+  margin-top: 1%;
   margin: auto;
-  background-color: #03A9F4;
+  align-content: center;
+  width: 50%;
+  display: block;
+  background-color: #29B6F6;
+  color: #FFFFFF;
+
+}
+mat-card ,mat-form-field{
+  margin: auto;
+  background-color: #01579B;
   text-align: center;
   align-content: center;
-  width: 40%;
+  width: 50%;
   display: block;
+  margin-bottom: 1%;
+
 }
 .quote {
   background-color: #00C853;
@@ -56,5 +69,9 @@ mat-card ,button{
 }
 .mat-focused .placeholder{
   color: #FFFFFF;
+
+}
+.mainCard {
+  padding: 1%;
 
 }

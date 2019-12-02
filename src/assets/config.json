@@ -1,0 +1,8 @@
+{
+    "url": {
+        "backUrl": "https://localhost:44349/",
+        "putQuotePath": "quote-management/quotes",
+        "getClientsPath" : "crm-api/clients",
+        "getProductsPath" : "crm-api/products"
+}
+}

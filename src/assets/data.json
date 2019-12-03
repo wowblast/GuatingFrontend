@@ -9,7 +9,7 @@
         },
 		"date": "2016/06/01",
 		"sold": false,
-		"qliList": [
+		"quoteListItems": [
 		    {
                 "product": {
                     "productCode": "REF-001",
@@ -42,7 +42,7 @@
         },
 		"date": "2016/06/01",
 		"sold": false,
-		"qliList": [
+		"quoteListItems": [
 		    {
                 "product": {
                     "productCode": "REF-001",
@@ -141,105 +141,7 @@
         },
 		"date": "2016/06/01",
 		"sold": false,
-		"qliList": [
-		    {
-                "product": {
-                    "productCode": "REF-001",
-                    "name": "Arroz camba"
-                },
-
-                "price": 5,
-                "quantity": 20
-		
-            },
-            {
-                "product": {
-                    "productCode": "REF-001",
-                    "name": "Papas con queso"
-                },
-
-                "price": 6,
-                "quantity": 2
-		
-            }
-        ]
-    },{
-		"quoteName": "COT-006",
-		"client": {
-			"clientCode": "MTR-300056",
-            "name": "Mauricio",
-            "lastname": "Terceros",
-            "ci": 7118795
-        },
-		"date": "2016/06/01",
-		"sold": false,
-		"qliList": [
-		    {
-                "product": {
-                    "productCode": "REF-001",
-                    "name": "Arroz camba"
-                },
-
-                "price": 5,
-                "quantity": 20
-		
-            },
-            {
-                "product": {
-                    "productCode": "REF-001",
-                    "name": "Papas con queso"
-                },
-
-                "price": 6,
-                "quantity": 2
-		
-            }
-        ]
-    },
-    {
-		"quoteName": "COT-007",
-		"client": {
-			"clientCode": "MTR-300056",
-            "name": "Mauricio",
-            "lastname": "Terceros",
-            "ci": 7118795
-        },
-		"date": "2016/06/01",
-		"sold": false,
-		"qliList": [
-		    {
-                "product": {
-                    "productCode": "REF-001",
-                    "name": "Arroz camba"
-                },
-
-                "price": 5,
-                "quantity": 20
-		
-            },
-            {
-                "product": {
-                    "productCode": "REF-001",
-                    "name": "Papas con queso"
-                },
-
-                "price": 6,
-                "quantity": 2
-		
-            }
-        ]
-    },
-    {
-		"quoteName": "COT-008",
-		"client": {
-			"clientCode": "MTR-300056",
-            "name": "Mauricio",
-            "lastname": "Terceros",
-            "ci": 7118795
-        },
-		"date": "2016/06/01",
-		"sold": false,
-		"qliList": [
+		"quoteListItems": [
 		    {
                 "product": {
                     "productCode": "REF-001",

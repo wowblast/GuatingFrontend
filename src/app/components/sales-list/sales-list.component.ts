@@ -23,7 +23,7 @@ export class SalesListComponent implements OnInit {
   }
 
   private buy (quote, i) {
-
+    quote.sold = true
     this.salesService.putQuote(quote.quoteName, quote)
     this.quotes.splice(i,1)
   }

@@ -11,13 +11,16 @@ export class SalesComponent implements OnInit {
 
   constructor(public salesService: salesService) { }
 
-  //private quotes = data;
-
   private quotes
 
 
   async ngOnInit() {
-    this.quotes = this.salesService.getQuotes()
+    // this.quotes = data;
+    const self = this
+    this.salesService.getQuotes().then(function (data) {
+      self.quotes = data
+    })
+    console.log(this.quotes)
   }
 
 }

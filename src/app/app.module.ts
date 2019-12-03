@@ -8,6 +8,8 @@ import { SalesMaterialModules } from './material';
 import { SalesComponent } from './components/sales/sales.component';
 import { SalesListComponent } from './components/sales-list/sales-list.component';
 
+import {HttpClientModule} from '@angular/common/http'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { SalesListComponent } from './components/sales-list/sales-list.component
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SalesMaterialModules
+    SalesMaterialModules,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

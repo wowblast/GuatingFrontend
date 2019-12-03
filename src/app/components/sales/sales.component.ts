@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import data from '../../../assets/data.json'
+import { salesService} from '../salesService/salesService'
 
 @Component({
   selector: 'app-sales',
@@ -8,11 +9,15 @@ import data from '../../../assets/data.json'
 })
 export class SalesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public salesService: salesService) { }
 
-  private quotes = data;
+  //private quotes = data;
 
-  ngOnInit() {
+  private quotes
+
+
+  async ngOnInit() {
+    this.quotes = this.salesService.getQuotes()
   }
 
 }

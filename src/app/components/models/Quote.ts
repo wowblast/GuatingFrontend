@@ -5,6 +5,6 @@ export interface Quote {
     clientCode: string,
     date: Date,
     sold: boolean,
-    quoteListItems: [QuoteItem]
+    quoteLineItems: [QuoteItem]
 
 }

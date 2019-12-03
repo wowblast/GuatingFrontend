@@ -45,7 +45,7 @@
   </mat-card>
  
 
-  <div *ngFor="let qt of quote.quoteListItems" class="col-3 card">
+  <div *ngFor="let qt of quote.quoteLineItems" class="col-3 card">
     <mat-card class="quote">
       <mat-card-header>
         <mat-card-title>{{qt.quoteName}}</mat-card-title>
@@ -64,7 +64,7 @@
 
 
   </div>
-  <button *ngIf="quote.quoteListItems.length != 0" mat-raised-button (click)="saveQuoteList()">Guardar Cotización</button>
+  <button *ngIf="quote.quoteLineItems.length != 0" mat-raised-button (click)="saveQuoteList()">Guardar Cotización</button>
 
 
 </div>

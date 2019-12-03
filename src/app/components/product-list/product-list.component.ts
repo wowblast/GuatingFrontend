@@ -10,6 +10,7 @@ import {ClientsService} from '../services/clients.service'
 import {ProductsService} from '../services/products.service'
 import {QuotesService} from '../services/quotes.service'
 
+let emptyArray = [];
 
 export interface Food {
   value: string;
@@ -28,16 +29,14 @@ export class ProductlistComponent implements OnInit {
   price: number = 7;
   protected clients :Client[] = [];
   protected products: Product[] = [];
-  quoteItemList: QuoteItem[]
+  quoteItemList: QuoteItem[] = [];
 
-
-  quote : Quote= {
+  quote = {
     quoteName: 'Cotización tienda 1',
     clientCode: 'MTR-6000',
     date: new Date(),
     sold: false,
-    quoteListItems: []
-
+    quoteLineItems: []
   }
 
   constructor(private snackBar: MatSnackBar, public clientService: ClientsService, public productService: ProductsService, public quoteService: QuotesService) { }
@@ -55,7 +54,7 @@ export class ProductlistComponent implements OnInit {
       });
     }
     else if (this.getProductStock(this.productCode) > this.quantity) {
-      this.quote.quoteListItems.push(
+      this.quote.quoteLineItems.push(
         {
           quoteName: this.quoteName,
           productCode: this.productCode,
@@ -93,23 +92,25 @@ export class ProductlistComponent implements OnInit {
     this.quoteService
     .postQuote(this.quote)
     .subscribe(quote => console.log(quote));
-    this.quote.quoteListItems = [];
+    this.quote.quoteLineItems = [];
   }
 
   ngOnInit() {
-    /*this.clientService.getClients().subscribe(
-      clients => {console.log(clients);
+    this.clientService.getClients().subscribe(
+      clientsp => {this.clients=clientsp;
+        console.log(clientsp);
       }
     ,
     err => console.log(err)  );
     this.productService.getProducts().subscribe(
-      products => {console.log(products);
+      products => {this.products=products;
+        console.log(products);
       }
     ,
-    err => console.log(err)  );*/
-    this.clients = clientsData;
-    this.products = productsData;
-    console.log(this.quote.quoteListItems.length)
+    err => console.log(err)  );
+    //this.clients = clientsData;
+    //this.products = productsData;
+    console.log(this.quote.quoteLineItems.length)
   }
 
 }

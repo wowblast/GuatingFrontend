@@ -4,6 +4,7 @@ import { Quote} from '../models/Quote';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import config from '../../../assets/config.json';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class QuotesService {
 
   
     postQuote (quote: Quote): Observable<Quote> {
+     
       return this.http.post<Quote>(config.url.backUrl+config.url.putQuotePath, quote)
         .pipe(
         );

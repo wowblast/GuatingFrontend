@@ -7,16 +7,21 @@ import { Injectable } from '@angular/core'
 
 export class salesService {
 
-    constructor() {}
+    private config
+
+    constructor() {
+        this.config = url
+    }
     async getQuotes () {
 
-       const response = await fetch('http://192.168.0.17:5000/crm-api/quotes')
+       const response = await fetch(this.config.backUrl + this.config.getQuotes)
        const r = response.json()
        return r
     }
 
     async putQuote (id, quote) {
-        const response = await fetch(url.backUrl + url.putQuote + id, quote)
+        const response = await fetch(this.config.backUrl + this.config.putQuote + id, quote)
+        return response
     }
 
 }

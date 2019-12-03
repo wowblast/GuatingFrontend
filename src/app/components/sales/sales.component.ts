@@ -15,7 +15,7 @@ export class SalesComponent implements OnInit {
 
 
   async ngOnInit() {
-    // this.quotes = data;
+    //this.quotes = data;
     const self = this
     this.salesService.getQuotes().then(function (data) {
       self.quotes = data

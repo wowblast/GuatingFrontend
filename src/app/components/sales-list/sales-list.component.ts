@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { salesService} from '../salesService/salesService';
+ import { salesService} from '../salesService/salesService';
 
 @Component({
   selector: 'app-sales-list',
@@ -24,8 +24,12 @@ export class SalesListComponent implements OnInit {
 
   private buy (quote, i) {
     quote.sold = true
-    this.salesService.putQuote(quote.quoteName, quote)
-    this.quotes.splice(i,1)
+    this.salesService.putQuote(quote.quoteName, quote).then(success => {
+      console.log('Success')
+      this.quotes.splice(i,1)
+    }).catch(err => {
+      console.log('fail')
+    })
   }
 
   ngOnInit() {

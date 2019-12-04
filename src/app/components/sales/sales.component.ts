@@ -19,8 +19,9 @@ export class SalesComponent implements OnInit {
     const self = this
     this.salesService.getQuotes().then(function (data) {
       self.quotes = data
+
+       console.log(self.quotes)
     })
-    console.log(this.quotes)
   }
 
 }

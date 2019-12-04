@@ -13,13 +13,21 @@ export class SalesListComponent implements OnInit {
   constructor(public salesService: salesService) { }
 
   private Calculate () {
-    this.quotes.forEach(quote => {
-      let total = 0;
-      quote.quoteListItems.forEach(item => {
-      total += item.price*item.quantity;
-      });
-      this.total.push(total)
-    })
+    setTimeout(() => {
+      this.quotes.forEach(quote => {
+        let total = 0;
+        if (quote !== undefined)
+        {
+          if (quote.quoteListItems !== undefined)
+          {
+            quote.quoteListItems.forEach(item => {
+            total += item.price*item.quantity;
+            });
+            this.total.push(total)
+          }
+        }
+      })
+    }, 2000);
   }
 
   private buy (quote, i) {
@@ -30,6 +38,8 @@ export class SalesListComponent implements OnInit {
       sold: true,
       qliList: []
     }
+    if (quote !== undefined)
+    {
     quote.quoteListItems.forEach(qo => {
       q.qliList.push({
         quoteName: quote.quoteName,
@@ -44,6 +54,7 @@ export class SalesListComponent implements OnInit {
     }).catch(err => {
       console.log('fail')
     })
+  }
   }
 
   ngOnInit() {

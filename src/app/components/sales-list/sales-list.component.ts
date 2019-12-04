@@ -23,8 +23,22 @@ export class SalesListComponent implements OnInit {
   }
 
   private buy (quote, i) {
-    quote.sold = true
-    this.salesService.putQuote(quote.quoteName, quote).then(success => {
+    const q = {
+      quoteName: quote.quoteName,
+      clientCode: quote.client.clientCode,
+      date: quote.date,
+      sold: true,
+      qliList: []
+    }
+    quote.quoteListItems.forEach(qo => {
+      q.qliList.push({
+        quoteName: quote.quoteName,
+        productCode: qo.productCode,
+        price: qo.price,
+        quantity: qo.quantity
+      })
+    })
+    this.salesService.putQuote(q.quoteName, q).then(success => {
       console.log('Success')
       this.quotes.splice(i,1)
     }).catch(err => {

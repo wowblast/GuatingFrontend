@@ -14,6 +14,7 @@ export class SalesListComponent implements OnInit {
 
   private Calculate () {
     setTimeout(() => {
+      if (this.quotes !== undefined) {
       this.quotes.forEach(quote => {
         let total = 0;
         if (quote !== undefined)
@@ -21,13 +22,28 @@ export class SalesListComponent implements OnInit {
           if (quote.quoteListItems !== undefined)
           {
             quote.quoteListItems.forEach(item => {
-            total += item.price*item.quantity;
+            total += this.discountProduct(item.price, item.quantity);
             });
-            this.total.push(total)
+            this.total.push(this.clientDiscount(total, quote.client))
           }
         }
       })
+    }
     }, 2000);
+  }
+
+  private clientDiscount (total, client) {
+    return total - total*(client.ranking/100)
+  }
+
+  private discountProduct (price, quantity) {
+    if (quantity >= 24) {
+      return (price*quantity) - (price*quantity*0.1)
+    } else if (quantity >= 5) {
+      return (price*quantity) - (price*quantity*0.05)
+    } else {
+      return price * quantity
+    }
   }
 
   private buy (quote, i) {
@@ -38,7 +54,7 @@ export class SalesListComponent implements OnInit {
       sold: true,
       qliList: []
     }
-    if (quote !== undefined)
+    if (quote !== undefined && quote.quoteListItems !== undefined)
     {
     quote.quoteListItems.forEach(qo => {
       q.qliList.push({
@@ -49,10 +65,9 @@ export class SalesListComponent implements OnInit {
       })
     })
     this.salesService.putQuote(q.quoteName, q).then(success => {
-      console.log('Success')
       this.quotes.splice(i,1)
     }).catch(err => {
-      console.log('fail')
+      alert(err)
     })
   }
   }

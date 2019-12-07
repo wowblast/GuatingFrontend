@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import data from '../../../assets/data.json'
 import { salesService} from '../salesService/salesService'
 
 @Component({
@@ -15,12 +14,14 @@ export class SalesComponent implements OnInit {
 
 
   async ngOnInit() {
-    //this.quotes = data;
+    
     const self = this
-    this.salesService.getQuotes().then(function (data) {
-      self.quotes = data
-
-       console.log(self.quotes)
+    this.salesService.getQuotes()
+    .then(function (data) {
+        self.quotes = data
+    })
+    .catch(function (error) {
+      alert(error)
     })
   }
 

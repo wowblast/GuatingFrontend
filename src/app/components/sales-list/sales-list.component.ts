@@ -21,13 +21,29 @@ export class SalesListComponent implements OnInit {
           if (quote.quoteListItems !== undefined)
           {
             quote.quoteListItems.forEach(item => {
-            total += item.price*item.quantity;
+            total += this.descuentoCantidad(item.quantity, item.price)
             });
-            this.total.push(total)
+
+            this.total.push(this.descuentoTotal(total, quote.client))
           }
         }
       })
     }, 2000);
+  }
+
+  private descuentoTotal(total, client) {
+    return total - client.ranking*total
+  }
+
+  private descuentoCantidad (quantity, price) {
+    if (quantity >= 24)
+    {
+      return price - price*0.1
+    }else if (quantity >= 5) {
+      return price - price*0.1
+    }else {
+      return price
+    }
   }
 
   private buy (quote, i) {

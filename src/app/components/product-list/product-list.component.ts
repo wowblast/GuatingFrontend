@@ -97,16 +97,17 @@ export class ProductlistComponent implements OnInit {
     this.quoteService
       .postQuote(this.quote).then(Response => Response ).catch(error => error)
     this.quote.quoteLineItems = [this.quoteItemList];
+    this.quote.quoteLineItems.pop();
   }
-
+  
   ngOnInit() {
     this.quote.quoteLineItems.pop()
     this.clientService.getClients().
     then(Response => this.clients =  Response as Array<Client>)
-    .catch(error => console.log(error))
+    .catch(error =>  alert("no se carga clientes correctamente"))
     this.productService.getProducts()
       .then(Response => {this.products = Response as Array<Product>})
-      .catch(error => console.log(error))
+      .catch(error => alert("no se carga clientes correctamente"))
 
       
   }

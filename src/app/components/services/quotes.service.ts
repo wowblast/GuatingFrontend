@@ -17,8 +17,8 @@ export class QuotesService {
     var promise = new Promise((resolve, reject) => {
       return this.http.post<Quote>(config.url.backUrl+config.url.putQuotePath, quote)
       .subscribe(
-          response => { resolve(response) },
-          error => { reject(error) }
+          response => {return resolve(response) },
+          error => { return reject(error) }
 
         )
     });

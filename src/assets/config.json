@@ -1,6 +1,6 @@
 {
     "url": {
-        "backUrl": "http://192.168.0.17:5000/",
+        "backUrl": "http://192.168.137.1:5000/",
         "putQuotePath": "crm-api/quotes",
         "getClientsPath" : "crm-api/clients",
         "getProductsPath" : "crm-api/products"

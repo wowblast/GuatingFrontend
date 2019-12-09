@@ -67,13 +67,13 @@ export class ProductlistComponent implements OnInit {
           duration: 2000,
         });
       }
-      
+
     } catch (error) {
       this.snackBar.open('Ocurrio un error', 'cerrar', {
         duration: 2000,
       });
     }
-  
+
 
   }
 
@@ -95,21 +95,31 @@ export class ProductlistComponent implements OnInit {
   }
   saveQuoteList() {
     this.quoteService
-      .postQuote(this.quote).then(Response => Response ).catch(error => error)
-    this.quote.quoteLineItems = [this.quoteItemList];
-    this.quote.quoteLineItems.pop();
+      .postQuote(this.quote).then(response => {
+        alert(response);
+        this.quote.quoteLineItems = [this.quoteItemList];
+        this.quote.quoteLineItems.pop();
+        this.snackBar.open('cotización completada', 'cerrar', {
+          duration: 2000,
+        });
+      }).catch(error => {
+        this.snackBar.open('error de cotización', 'cerrar', {
+          duration: 2000,
+        });
+      })
+
   }
-  
+
   ngOnInit() {
     this.quote.quoteLineItems.pop()
-    this.clientService.getClients().
-    then(Response => this.clients =  Response as Array<Client>)
-    .catch(error =>  alert("no se carga clientes correctamente"))
+    this.clientService.getClients()
+      .then(response => this.clients = response as Array<Client>)
+      .catch(error => { alert("no se carga clientes correctamente"); this.clients = []; })
     this.productService.getProducts()
-      .then(Response => {this.products = Response as Array<Product>})
-      .catch(error => alert("no se carga clientes correctamente"))
+      .then(response => { this.products = response as Array<Product> })
+      .catch(error => { alert("no se carga clientes correctamente"); this.products = []; })
 
-      
+
   }
 
 }

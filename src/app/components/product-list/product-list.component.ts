@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import clientsData from '../../../assets/clients.json';
-import productsData from '../../../assets/products.json';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {Client } from '../models/Client';
-import {Product } from '../models/Product';
-import {Quote } from '../models/Quote';
-import {QuoteItem} from '../models/QuoteItem';
-import {ClientsService} from '../services/clients.service'
-import {ProductsService} from '../services/products.service'
-import {QuotesService} from '../services/quotes.service'
+import { Client } from '../models/Client';
+import { Product } from '../models/Product';
+import { Quote } from '../models/Quote';
+import { QuoteItem } from '../models/QuoteItem';
+import { ClientsService } from '../services/clients.service'
+import { ProductsService } from '../services/products.service'
+import { QuotesService } from '../services/quotes.service'
 
-let emptyArray = [];
 
 export interface Food {
   value: string;
@@ -27,16 +24,17 @@ export class ProductlistComponent implements OnInit {
   quantity: number = 10;
   quoteName: string = 'COT-001';
   price: number = 7;
-  protected clients :Client[] = [];
-  protected products: Product[] = [];
-  quoteItemList: QuoteItem[] = [];
+  protected clients: Client[];
+  protected products: Product[];
+  quoteItemList: QuoteItem;
 
-  quote = {
+
+  quote: Quote = {
     quoteName: 'Cotización tienda 1',
     clientCode: 'MTR-6000',
     date: new Date(),
     sold: false,
-    quoteLineItems: []
+    quoteLineItems: [this.quoteItemList]
   }
 
   constructor(private snackBar: MatSnackBar, public clientService: ClientsService, public productService: ProductsService, public quoteService: QuotesService) { }
@@ -47,34 +45,41 @@ export class ProductlistComponent implements OnInit {
     });
   }
   public createQuoting() {
-    
-    if (this.clientName == 'default' || this.productCode == 'default') {
-      this.snackBar.open('cotización incompleta', 'cerrar', {
+
+    try {
+      if (this.clientName == 'default' || this.productCode == 'default') {
+        this.snackBar.open('cotización incompleta', 'cerrar', {
+          duration: 2000,
+        });
+      }
+      else if (this.getProductStock(this.productCode) > this.quantity) {
+        this.quote.quoteLineItems.push(
+          {
+            quoteName: this.quoteName,
+            productCode: this.productCode,
+            price: this.price,
+            quantity: this.quantity
+          }
+        )
+      }
+      else {
+        this.snackBar.open('no stock', 'cerrar', {
+          duration: 2000,
+        });
+      }
+      
+    } catch (error) {
+      this.snackBar.open('Ocurrio un error', 'cerrar', {
         duration: 2000,
       });
     }
-    else if (this.getProductStock(this.productCode) > this.quantity) {
-      this.quote.quoteLineItems.push(
-        {
-          quoteName: this.quoteName,
-          productCode: this.productCode,
-          price: this.price,
-          quantity: this.quantity
-        }
-      )
-    }
-    else {
-      this.snackBar.open('no stock', 'cerrar', {
-        duration: 2000,
-      });
-    }
+  
 
   }
 
   changeClient(value) {
     this.clientName = value;
     this.quote.clientCode = value;
-    console.log(value);
   }
   changeProduct(value) {
     this.productCode = value;
@@ -88,29 +93,22 @@ export class ProductlistComponent implements OnInit {
 
     return actualProduct[0].stock;
   }
-  saveQuoteList( ) {
+  saveQuoteList() {
     this.quoteService
-    .postQuote(this.quote)
-    .subscribe(quote => console.log(quote));
-    this.quote.quoteLineItems = [];
+      .postQuote(this.quote).then(Response => Response ).catch(error => error)
+    this.quote.quoteLineItems = [this.quoteItemList];
   }
 
   ngOnInit() {
-    this.clientService.getClients().subscribe(
-      clientsp => {this.clients=clientsp;
-        console.log(clientsp);
-      }
-    ,
-    err => console.log(err)  );
-    this.productService.getProducts().subscribe(
-      products => {this.products=products;
-        console.log(products);
-      }
-    ,
-    err => console.log(err)  );
-    //this.clients = clientsData;
-    //this.products = productsData;
-    console.log(this.quote.quoteLineItems.length)
+    this.quote.quoteLineItems.pop()
+    this.clientService.getClients().
+    then(Response => this.clients =  Response as Array<Client>)
+    .catch(error => console.log(error))
+    this.productService.getProducts()
+      .then(Response => {this.products = Response as Array<Product>})
+      .catch(error => console.log(error))
+
+      
   }
 
 }

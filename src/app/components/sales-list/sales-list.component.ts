@@ -14,6 +14,7 @@ export class SalesListComponent implements OnInit {
 
   private Calculate () {
     setTimeout(() => {
+      if (this.quotes !== undefined) {
       this.quotes.forEach(quote => {
         let total = 0;
         if (quote !== undefined)
@@ -21,28 +22,27 @@ export class SalesListComponent implements OnInit {
           if (quote.quoteListItems !== undefined)
           {
             quote.quoteListItems.forEach(item => {
-            total += this.descuentoCantidad(item.quantity, item.price)
+            total += this.discountProduct(item.price, item.quantity);
             });
-
-            this.total.push(this.descuentoTotal(total, quote.client))
+            this.total.push(this.clientDiscount(total, quote.client))
           }
         }
       })
+    }
     }, 2000);
   }
 
-  private descuentoTotal(total, client) {
-    return total - client.ranking/100*total
+  private clientDiscount (total, client) {
+    return total - total*(client.ranking/100)
   }
 
-  private descuentoCantidad (quantity, price) {
-    if (quantity >= 24)
-    {
-      return quantity*(price - price*0.1)
-    }else if (quantity >= 5) {
-      return quantity*(price - price*0.1)
-    }else {
-      return price*quantity
+  private discountProduct (price, quantity) {
+    if (quantity >= 24) {
+      return (price*quantity) - (price*quantity*0.1)
+    } else if (quantity >= 5) {
+      return (price*quantity) - (price*quantity*0.05)
+    } else {
+      return price * quantity
     }
   }
 
@@ -54,7 +54,7 @@ export class SalesListComponent implements OnInit {
       sold: true,
       quoteLineItems: []
     }
-    if (quote !== undefined)
+    if (quote !== undefined && quote.quoteListItems !== undefined)
     {
     quote.quoteListItems.forEach(qo => {
       q.quoteLineItems.push({
@@ -65,10 +65,9 @@ export class SalesListComponent implements OnInit {
       })
     })
     this.salesService.putQuote(q.quoteName, q).then(success => {
-      console.log('Success')
       this.quotes.splice(i,1)
     }).catch(err => {
-      console.log('fail')
+      alert(err)
     })
   }
   }

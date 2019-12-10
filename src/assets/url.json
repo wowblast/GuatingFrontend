@@ -1,5 +1,5 @@
 {
-    "backUrl" : "http://192.168.0.17:5000/",
+    "backUrl" : "http://192.168.137.1:5000/",
     "getQuotes": "crm-api/quotes",
     "putQuote": "crm-api/quotes/"
 }

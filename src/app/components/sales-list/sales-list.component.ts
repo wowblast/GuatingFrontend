@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SalesListComponent implements OnInit {
 
-  @Input() quotes: Array<any>;
+  @Input() quotes: Array<any> = [];
   private total = [];
   constructor(public salesService: salesService) { }
 
@@ -32,17 +32,17 @@ export class SalesListComponent implements OnInit {
   }
 
   private descuentoTotal(total, client) {
-    return total - client.ranking*total
+    return total - client.ranking/100*total
   }
 
   private descuentoCantidad (quantity, price) {
     if (quantity >= 24)
     {
-      return price - price*0.1
+      return quantity*(price - price*0.1)
     }else if (quantity >= 5) {
-      return price - price*0.1
+      return quantity*(price - price*0.1)
     }else {
-      return price
+      return price*quantity
     }
   }
 
@@ -52,12 +52,12 @@ export class SalesListComponent implements OnInit {
       clientCode: quote.client.clientCode,
       date: quote.date,
       sold: true,
-      qliList: []
+      quoteLineItems: []
     }
     if (quote !== undefined)
     {
     quote.quoteListItems.forEach(qo => {
-      q.qliList.push({
+      q.quoteLineItems.push({
         quoteName: quote.quoteName,
         productCode: qo.productCode,
         price: qo.price,

@@ -49,7 +49,7 @@ export class SalesListComponent implements OnInit {
   private buy (quote, i) {
     const q = {
       quoteName: quote.quoteName,
-      clientCode: quote.client.clientCode,
+      clientCode: quote.client.clientId,
       date: quote.date,
       sold: true,
       quoteLineItems: []
@@ -59,7 +59,7 @@ export class SalesListComponent implements OnInit {
     quote.quoteListItems.forEach(qo => {
       q.quoteLineItems.push({
         quoteName: quote.quoteName,
-        productCode: qo.productCode,
+        productCode: qo.product.code,
         price: qo.price,
         quantity: qo.quantity
       })

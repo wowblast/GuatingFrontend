@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SalesMaterialModules } from './material';
 import { SalesComponent } from './components/sales/sales.component';
 import { SalesListComponent } from './components/sales-list/sales-list.component';
+import interceptors from './components/interceptors'
+
+interceptors.init();
 
 import {HttpClientModule} from '@angular/common/http'
 

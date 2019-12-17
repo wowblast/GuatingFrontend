@@ -1,20 +1,18 @@
 .example-container {
   align-content: center;
-    display: flex;
-    flex-direction: column;
-    
-  }
-  
-  .example-container > * {
-    align-content: center;
+  display: flex;
+  flex-direction: column;
+}
 
-    width: 90%;
-  }
-  .example-button-row button,
+.example-container > * {
+  align-content: center;
+
+  width: 90%;
+}
+.example-button-row button,
 .example-button-row a {
   margin-right: 8px;
   text-align: center;
-
 }
 h1 {
   margin: auto;
@@ -23,24 +21,19 @@ h1 {
   width: 95%;
   margin-bottom: 1%;
   padding: 1%;
-  color: #FFFFFF;
-
+  color: #ffffff;
 }
 
-
-
- input,  mat-label{
+input,
+mat-label {
   margin: auto;
   text-align: center;
   align-content: center;
   margin-left: 5%;
-  color: #FFFFFF;
-
-
-
+  color: #ffffff;
 }
 option-class {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 button {
   margin-top: 1%;
@@ -48,30 +41,27 @@ button {
   align-content: center;
   width: 50%;
   display: block;
-  background-color: #29B6F6;
-  color: #FFFFFF;
-
+  background-color: #29b6f6;
+  color: #ffffff;
 }
-mat-card ,mat-form-field{
+mat-card,
+mat-form-field {
   margin: auto;
-  background-color: #01579B;
+  background-color: #01579b;
   text-align: center;
   align-content: center;
   width: 50%;
   display: block;
   margin-bottom: 1%;
-
 }
 .quote {
-  background-color: #00C853;
+  background-color: #00c853;
   margin-top: 1%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
-.mat-focused .placeholder{
-  color: #FFFFFF;
-
+.mat-focused .placeholder {
+  color: #ffffff;
 }
 .mainCard {
   padding: 1%;
-
 }

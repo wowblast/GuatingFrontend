@@ -8,7 +8,6 @@ import { ClientsService } from '../services/clients.service'
 import { ProductsService } from '../services/products.service'
 import { QuotesService } from '../services/quotes.service'
 
-
 export interface Food {
   value: string;
   viewValue: string;
@@ -28,7 +27,6 @@ export class ProductlistComponent implements OnInit {
   protected products: Product[];
   quoteItemList: QuoteItem;
 
-
   quote: Quote = {
     quoteName: 'Cotización tienda 1',
     clientCode: 'MTR-6000',
@@ -39,13 +37,23 @@ export class ProductlistComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar, public clientService: ClientsService, public productService: ProductsService, public quoteService: QuotesService) { }
 
+  ngOnInit() {
+    this.quote.quoteLineItems.pop()
+    this.clientService.getClients()
+      .then(response => this.clients = response as Array<Client>)
+      .catch(error => { console.log("no se carga clientes correctamente"); this.clients = []; })
+    this.productService.getProducts()
+      .then(response => { this.products = response as Array<Product> })
+      .catch(error => { console.log("no se carga productos correctamente"); this.products = []; })
+  }
+
   openSnackBar() {
     this.snackBar.open('no stock', 'cerrar', {
       duration: 2000,
     });
   }
-  public createQuoting() {
 
+  public createQuoting() {
     try {
       if (this.clientName == 'default' || this.productCode == 'default') {
         this.snackBar.open('cotización incompleta', 'cerrar', {
@@ -73,17 +81,15 @@ export class ProductlistComponent implements OnInit {
         duration: 2000,
       });
     }
-
-
   }
 
   changeClient(value) {
     this.clientName = value;
     this.quote.clientCode = value;
   }
+
   changeProduct(value) {
     this.productCode = value;
-
   }
 
   getProductStock(productCode) {
@@ -93,6 +99,7 @@ export class ProductlistComponent implements OnInit {
 
     return actualProduct[0].stock;
   }
+
   saveQuoteList() {
     this.quoteService
       .postQuote(this.quote).then(response => {
@@ -107,18 +114,6 @@ export class ProductlistComponent implements OnInit {
           duration: 2000,
         });
       })
-
-  }
-
-  ngOnInit() {
-    this.quote.quoteLineItems.pop()
-    this.clientService.getClients()
-      .then(response => this.clients = response as Array<Client>)
-      .catch(error => { alert("no se carga clientes correctamente"); this.clients = []; })
-    this.productService.getProducts()
-      .then(response => { this.products = response as Array<Product> })
-      .catch(error => { alert("no se carga clientes correctamente"); this.products = []; })
-
 
   }
 

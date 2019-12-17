@@ -9,6 +9,11 @@ import { ProductlistComponent } from './components/product-list/product-list.com
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AuthInterceptorService } from './components/interceptors/auth-interceptor.service';
+import { ErrorInterceptorService } from './components/interceptors/error-interceptor.service';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +27,15 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+  },{
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

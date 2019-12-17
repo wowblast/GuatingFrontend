@@ -19,40 +19,16 @@ export class salesService {
         return new Promise((resolve, reject) => {
             axios.get(this.config.backUrl + this.config.getQuotes)
               .then(response => { resolve(response.data) })
-              .catch(error => { console.log(error); reject('No se pudo comunicar con el servidor') })
+              .catch(error => { console.log(error); reject(error) })
           })
-        
-       /*return new Promise (async (resolve, reject) => {
-        try {
-            const response = await fetch(this.config.backUrl + this.config.getQuotes)
-            const r = response.json()
-            resolve (r)
-        } catch (error) {
-
-            console.log (error)
-            reject('No se pudo comunicar con el servidor')
-        }
-    })*/
     }
 
     async putQuote (id, quote) {
         return new Promise((resolve, reject) => {
             axios.put(this.config.backUrl + this.config.putQuote + id, quote)
               .then(response => { resolve(response.data) })
-              .catch(error => { console.log(error); reject('No se pudo enviar tu solicitud, error de conexion') })
+              .catch(error => { console.log(error); reject(error) })
           })
-        /*return new Promise (async (resolve, reject) => {
-            try {
-                const response = await fetch(this.config.backUrl + this.config.putQuote + id, {
-                    method: 'PUT',
-                    body: quote
-                })
-                resolve (response.json())
-            } catch (error) {
-                console.log(error)
-                reject('No se pudo enviar tu solicitud, error de conexion')
-            }
-        })*/
     }
 
 }

@@ -8,6 +8,7 @@ import { SalesMaterialModules } from './material';
 import { SalesComponent } from './components/sales/sales.component';
 import { SalesListComponent } from './components/sales-list/sales-list.component';
 import interceptors from './components/interceptors'
+import { MatSnackBarModule } from '@angular/material'
 
 interceptors.init();
 
@@ -24,7 +25,8 @@ import {HttpClientModule} from '@angular/common/http'
     AppRoutingModule,
     BrowserAnimationsModule,
     SalesMaterialModules,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

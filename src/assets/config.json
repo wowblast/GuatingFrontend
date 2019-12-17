@@ -1,5 +1,6 @@
 {
-    "backUrl" : "http://localhost:5000",
-    "getQuotes": "/crm-api/quotes",
-    "putQuote": "/crm-api/quotes/"
+    "backUrl" : "http://localhost:8090",
+    "getQuotes": "/crm-api/quotes/pending",
+    "putQuote": "/crm-api/quotes/",
+    "loginPage": "http://localhost:8080/login"
 }

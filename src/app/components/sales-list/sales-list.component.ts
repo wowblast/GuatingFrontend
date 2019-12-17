@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
  import { salesService} from '../salesService/salesService';
+ import { MatSnackBar} from '@angular/material'
 
 @Component({
   selector: 'app-sales-list',
@@ -10,7 +11,7 @@ export class SalesListComponent implements OnInit {
 
   @Input() quotes: Array<any> = [];
   private total = [];
-  constructor(public salesService: salesService) { }
+  constructor(public salesService: salesService,private _snackBar: MatSnackBar) { }
 
   private Calculate () {
     setTimeout(() => {
@@ -47,6 +48,7 @@ export class SalesListComponent implements OnInit {
   }
 
   private buy (quote, i) {
+    const self = this
     const q = {
       quoteName: quote.quoteName,
       clientCode: quote.client.clientId,
@@ -66,8 +68,10 @@ export class SalesListComponent implements OnInit {
     })
     this.salesService.putQuote(q.quoteName, q).then(success => {
       this.quotes.splice(i,1)
-    }).catch(err => {
-      alert(err)
+    }).catch(function (error) {
+        self._snackBar.open(error,"", {
+        duration: 10000
+      });
     })
   }
   }

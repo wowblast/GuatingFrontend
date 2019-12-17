@@ -4,6 +4,6 @@
         "loginUrl": "http://localhost:8080/",
         "putQuotePath": "crm-api/quotes",
         "getClientsPath" : "crm-api/clients",
-        "getProductsPath" : "product-management/products"
+        "getProductsPath" : "crm-api/products"
     }
 }

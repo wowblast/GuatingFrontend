@@ -10,7 +10,7 @@ export class ProductsService {
   emptyProducts: Observable<Product>;
   constructor(private http: HttpClient) { }
   getProducts() {
-
+    
      var promise = new Promise((resolve, reject) => {
       this.http.get<Product[]>(config.url.backUrl + config.url.getProductsPath)
         .subscribe(

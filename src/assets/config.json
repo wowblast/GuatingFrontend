@@ -1,7 +1,7 @@
 {
     "url": {
-        "backUrl": "http://localhost:8090/",
-        "loginUrl": "http://localhost:8080/",
+        "backUrl": "http://localhost:7050/",
+        "loginUrl": "http://localhost:7050/login",
         "putQuotePath": "crm-api/quotes",
         "getClientsPath" : "crm-api/clients",
         "getProductsPath" : "crm-api/products"

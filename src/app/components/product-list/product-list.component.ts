@@ -41,10 +41,10 @@ export class ProductlistComponent implements OnInit {
     this.quote.quoteLineItems.pop()
     this.clientService.getClients()
       .then(response => this.clients = response as Array<Client>)
-      .catch(error => { console.log("no se carga clientes correctamente"); this.clients = []; })
+      .catch(error => { console.log('no se carga clientes correctamente', error); this.clients = []; })
     this.productService.getProducts()
       .then(response => { this.products = response as Array<Product> })
-      .catch(error => { console.log("no se carga productos correctamente"); this.products = []; })
+      .catch(error => { console.log('no se carga productos correctamente', error); this.products = []; })
   }
 
   openSnackBar() {

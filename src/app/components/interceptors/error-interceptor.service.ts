@@ -21,24 +21,27 @@ export class ErrorInterceptorService implements HttpInterceptor {
         if (error instanceof ErrorEvent) {
           errorMessage = `Client-side error: ${error.message}`;
         } else {
-          switch (error.status) {
-            case 401:
-              window.location.replace(config.url.loginUrl);
-              break;
-            case 404:
-              this.snackBar.open('404 Recurso no encontrado', 'Listo', { duration: 5000 });
-              break;
-            case 408:
-              this.snackBar.open('408 Tiempo de espera agotado', 'Listo', { duration: 5000 });
-              break;
-            case 500:
-              this.snackBar.open('500 Error interno del servidor', 'Listo', { duration: 5000 });
-              break;
-            default:
-              this.snackBar.open('Código HTTP ' + error.status, 'Listo', { duration: 5000 });
-              break;
+          if (error) {          
+            switch (error.status) {
+              case 401:
+                window.location.replace(config.url.loginUrl);
+                break;
+              case 404:
+                this.snackBar.open('404 Recurso no encontrado', 'Listo', { duration: 5000 });
+                break;
+              case 408:
+                this.snackBar.open('408 Tiempo de espera agotado', 'Listo', { duration: 5000 });
+                break;
+              case 500:
+                this.snackBar.open('500 Error interno del servidor', 'Listo', { duration: 5000 });
+                break;
+              default:
+                break;
+            }
+            errorMessage = `Server-side error: ${error.status} ${error.message}`;
+          } else {
+            errorMessage = "Undefined error"
           }
-          errorMessage = `Server-side error: ${error.status} ${error.message}`;
         }
         
         return throwError(errorMessage);

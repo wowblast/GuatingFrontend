@@ -18,7 +18,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     let request = req;
 
     if (token) {
-      this.snackBar.open('Agregando TOKEN a la petición', 'Listo', { duration: 5000 });
+      console.log('Agregando TOKEN a la petición');
 
       request = req.clone({
         setHeaders: {

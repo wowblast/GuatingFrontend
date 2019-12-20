@@ -1,6 +1,6 @@
 {
-    "backUrl" : "http://localhost:8090",
+    "backUrl" : "http://localhost:7050",
     "getQuotes": "/crm-api/quotes/pending",
     "putQuote": "/crm-api/quotes/",
-    "loginPage": "http://localhost:8080/login"
+    "loginPage": "http://localhost:7050/login"
 }

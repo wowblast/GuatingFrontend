@@ -1,5 +1,6 @@
 import config from '../../../assets/config.json'
 import { Injectable } from '@angular/core'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { resolve } from 'url'
 import axios from "axios";
 
@@ -12,22 +13,32 @@ export class salesService {
 
   private config
 
-    constructor() {
+    constructor(private http:HttpClient) {
         this.config = config;
     }
     async getQuotes () {
         return new Promise((resolve, reject) => {
-            axios.get(this.config.backUrl + this.config.getQuotes)
-              .then(response => { resolve(response.data) })
-              .catch(error => { console.log(error); reject(error) })
+            return this.http.get<any>(this.config.backUrl + this.config.getQuotes).subscribe(
+                response => {
+                    resolve(response)
+                },
+                error => {
+                    reject(error)
+                }
+            )
           })
     }
 
     async putQuote (id, quote) {
         return new Promise((resolve, reject) => {
-            axios.put(this.config.backUrl + this.config.putQuote + id, quote)
-              .then(response => { resolve(response.data) })
-              .catch(error => { console.log(error); reject(error) })
+            return this.http.put<any>(this.config.backUrl + this.config.putQuote + id, quote).subscribe(
+                response => {
+                    resolve(response)
+                },
+                error => {
+                    reject(error)
+                }
+            )
           })
     }
 

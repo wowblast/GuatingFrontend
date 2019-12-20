@@ -4,13 +4,16 @@ import { CompilerConfig } from '@angular/compiler';
 
   export default {
     init() {
+
         axios.interceptors.request.use((config) => {
             var token = localStorage.getItem('token');
             if(token){
-              config.headers.Authorization = `Bearer ${token}`;
+              config.headers['Authorization'] = 'Bearer ' + token;
+              //config.headers.Authorization = `Bearer ${token}`;
+              console.log(config.headers);
               return config;
             }else{
-              window.location.href = configuration.loginPage;
+              //window.location.href = configuration.loginPage;
               return null;
             }
           }, (error) => {
